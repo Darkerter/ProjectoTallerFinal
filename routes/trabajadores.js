@@ -55,4 +55,15 @@ trabajadores.put ('/:id([0-9]{1,3})', async(req,res,next)=>{
     
 });
 
+trabajadores.get('/:name([A-Za-z]+)', async(req,res,next)=>{
+    const name =req.params.name;
+    const trabajador = await  db.query("SELECT * FROM trabajadores WHERE nombre='"+ name +"';");
+    
+    if(trabajador.length > 0)  
+    return res.status(200).json({code:200, message:trabajador})
+
+    return res.status(404).send({code:404, message:"trabajador no encontrado"});
+
+});
+
 module.exports = trabajadores;
