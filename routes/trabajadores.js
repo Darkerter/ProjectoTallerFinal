@@ -34,4 +34,25 @@ trabajadores.delete('/:id([0-9]{1,3})', async(req,res,next)=>{
 
 });
 
+trabajadores.put ('/:id([0-9]{1,3})', async(req,res,next)=>{
+        
+    const {nombre,apellido,telefono,correo,dirrecion} = req.body;
+    if(correo && apellido && nombre && telefono && dirrecion){
+        let query = `UPDATE trabajadores SET nombre='${nombre}', apellido= '${apellido}' ,`;
+        query += `telefono= ${telefono},correo=' ${correo}',dirrecion= '${dirrecion}' WHERE trabajadorId=${req.params.id}`;
+
+        const rows = await db.query(query);
+
+        if (rows.affectedRows == 1) {
+            return res.status(201).json({code:201,message:"trabajador actualizado correctamente"}); 
+        }
+        
+        return res.status(500).json({code:500,message:"ocurrio un error"});
+        
+    }
+    return res.status(500).json({code:500,message:"Campos incompletos"});
+
+    
+});
+
 module.exports = trabajadores;
