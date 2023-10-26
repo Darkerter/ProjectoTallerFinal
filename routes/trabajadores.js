@@ -23,4 +23,15 @@ trabajadores.post("/", async(req,res,next)=>{
 
 });
 
+trabajadores.delete('/:id([0-9]{1,3})', async(req,res,next)=>{
+    const query =`DELETE FROM trabajadores WHERE trabajadorId = ${req.params.id}`;
+    const rows = await db.query(query);
+
+    if (rows.affectedRows == 1){
+        return res.status(200).json({code:201,message:"trabajador borrado correctamente"});
+    }
+        return res.status(404).json({code:404,message:"trabajador no encontrado"})
+
+});
+
 module.exports = trabajadores;
