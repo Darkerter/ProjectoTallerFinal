@@ -1,0 +1,29 @@
+{
+  "name": "projectotallerfinal",
+  "version": "1.0.0",
+  "description": "Projecto final del taller",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darkerter/ProjectoTallerFinal.git"
+  },
+  "keywords": [
+    "node.js",
+    "express"
+  ],
+  "author": "Angel Monzoni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darkerter/ProjectoTallerFinal/issues"
+  },
+  "homepage": "https://github.com/Darkerter/ProjectoTallerFinal#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1"
+  }
+}
